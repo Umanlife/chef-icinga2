@@ -50,7 +50,8 @@ template ::File.join(node['apache']['dir'], 'conf-available', 'icinga2-web2.conf
   notifies :reload, 'service[apache2]', :delayed
   variables(:web_root => node['icinga2']['web2']['web_root'],
             :web_uri => node['icinga2']['web2']['web_uri'],
-            :conf_dir => node['icinga2']['web2']['conf_dir'])
+            :conf_dir => node['icinga2']['web2']['conf_dir'],
+            :ssl => node['icinga2']['web2']['ssl'])
   only_if { node['icinga2']['web2']['enable'] }
 end
 
