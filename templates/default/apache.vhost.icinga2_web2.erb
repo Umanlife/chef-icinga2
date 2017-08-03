@@ -4,6 +4,13 @@ DocumentRoot "<%= @web_root -%>/public"
 Alias <%= @web_uri -%> "<%= @web_root -%>/public"
 <% end -%>
 
+<IfModule mod_ssl.c>
+    SSLEngine on
+    SSLCertificateFile <%= @ssl['certificate'] %>
+    SSLCertificateKeyFile <%= @ssl['private_key'] %>
+    SSLCertificateChainFile <%= @ssl['certificate_chain'] %>
+</IfModule>
+
 <Directory "<%= @web_root -%>/public">
     Options SymLinksIfOwnerMatch
     AllowOverride None
