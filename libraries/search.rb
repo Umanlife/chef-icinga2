@@ -202,7 +202,7 @@ module Icinga2
       node_hash['name'] = node.name
       if use_fqdn_resolv
         # lookup ip address from node fqdn
-        node_hash['address'] = fqdn_resolv(node_hash['name'])
+        node_hash['address'] = fqdn_resolv(node['fqdn'])
         node_hash['address'] = node['ipaddress'] if failover_fqdn_address && !node_hash['address']
       else
         node_hash['address'] = node['ipaddress']
