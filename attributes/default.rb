@@ -51,6 +51,7 @@ default['icinga2']['limit_region'] = true
 default['icinga2']['host_display_name_attr'] = 'hostname'
 default['icinga2']['use_fqdn_resolv'] = false
 default['icinga2']['failover_fqdn_address'] = true
+default['icinga2']['failover_fqdn_public_address'] = false
 default['icinga2']['ignore_node_error'] = false
 default['icinga2']['ignore_resolv_error'] = true
 

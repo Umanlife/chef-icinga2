@@ -35,7 +35,7 @@ module Icinga2
                   :ignore_resolv_error, :exclude_recipes, :exclude_roles, :env_custom_vars,
                   :limit_region, :server_region, :search_pattern, :use_fqdn_resolv,
                   :add_cloud_custom_vars, :env_skip_node_vars, :add_node_vars,
-                  :env_filter_node_vars, :failover_fqdn_address, :add_inet_custom_vars
+                  :env_filter_node_vars, :failover_fqdn_address, :failover_fqdn_public_address, :add_inet_custom_vars
 
     def initialize(options = {})
       @query = options
@@ -60,6 +60,7 @@ module Icinga2
       @env_filter_node_vars = options[:env_filter_node_vars]
       @env_skip_node_vars = options[:env_skip_node_vars]
       @failover_fqdn_address = options[:failover_fqdn_address]
+      @failover_fqdn_public_address = options[:failover_fqdn_public_address]
     end
 
     def fqdn_resolv(fqdn)
@@ -204,6 +205,7 @@ module Icinga2
         # lookup ip address from node fqdn
         node_hash['address'] = fqdn_resolv(node_hash['name'])
         node_hash['address'] = node['ipaddress'] if failover_fqdn_address && !node_hash['address']
+        node_hash['address'] = node['cloud']['public_ipv4'] if failover_fqdn_public_address && !node_hash['address']
       else
         node_hash['address'] = node['ipaddress']
       end

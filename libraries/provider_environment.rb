@@ -55,6 +55,7 @@ class Chef
                                                                           :ignore_node_error => new_resource.ignore_node_error,
                                                                           :use_fqdn_resolv => new_resource.use_fqdn_resolv,
                                                                           :failover_fqdn_address => new_resource.failover_fqdn_address,
+                                                                          :failover_fqdn_public_address => new_resource.failover_fqdn_public_address,
                                                                           :ignore_resolv_error => new_resource.ignore_resolv_error,
                                                                           :exclude_recipes => new_resource.exclude_recipes,
                                                                           :exclude_roles => new_resource.exclude_roles,

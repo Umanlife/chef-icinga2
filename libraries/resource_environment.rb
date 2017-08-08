@@ -114,6 +114,14 @@ class Chef
         )
       end
 
+      def failover_fqdn_public_address(arg = nil)
+        set_or_return(
+          :failover_fqdn_public_address, arg,
+          :kind_of => [TrueClass, FalseClass],
+          :default => node['icinga2']['failover_fqdn_public_address']
+        )
+      end
+
       def ignore_node_error(arg = nil)
         set_or_return(
           :ignore_node_error, arg,
