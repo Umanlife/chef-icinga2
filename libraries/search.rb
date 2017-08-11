@@ -204,8 +204,8 @@ module Icinga2
       if use_fqdn_resolv
         # lookup ip address from node fqdn
         node_hash['address'] = fqdn_resolv(node['fqdn'])
-        node_hash['address'] = node['ipaddress'] if failover_fqdn_address && !node_hash['address']
-        node_hash['address'] = node['cloud']['public_ipv4'] if failover_fqdn_public_address && !node_hash['address']
+        node_hash['address'] = node['ipaddress'] if !node_hash['address'] && failover_fqdn_address
+        node_hash['address'] = node['cloud']['public_ipv4'] if !node_hash['address'] && node['cloud'] && failover_fqdn_public_address
       else
         node_hash['address'] = node['ipaddress']
       end
